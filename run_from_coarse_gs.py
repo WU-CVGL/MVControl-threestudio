@@ -48,11 +48,11 @@ if __name__ == "__main__":
     exp_root_dir = f"workspace/mvcontrol_{condition_type}"
     
     if hint_path is None:
-        hint_path = f"load/processed/{asset_name}_{condition_type}.png"
+        hint_path = f"{exp_root_dir}/{asset_name}/{asset_name}_{condition_type}.png"
     if mask_path is None:
-        mask_path = f"load/processed/{asset_name}_mask.png"
+        mask_path = f"{exp_root_dir}/{asset_name}/{asset_name}_mask.png"
     if prompt is None:
-        with open(f"load/processed/{asset_name}_prompt.txt", "r") as f:
+        with open(f"{exp_root_dir}/{asset_name}/{asset_name}_prompt.txt", "r") as f:
             prompt = f.readline()
 
     
@@ -65,9 +65,10 @@ if __name__ == "__main__":
     # Stage 2. Gaussian refinement with SDS (MVControl + DeepFloyd-IF)
     command = f"python launch.py --config custom/threestudio-3dgs/configs/mvcontrol-gaussian.yaml --train --gpu 0 \
             system.stage=gaussian system.hint_image_path={hint_path} system.hint_mask_path={mask_path} \
+            system.control_condition_type={condition_type} \
             system.prompt_processor.prompt='{prompt}' \
             system.geometry.geometry_convert_from={coarse_gs_path} \
-            system.control_condition_type={condition_type} \
+            system.guidance_control.pretrained_controlnet_name_or_path=lzq49/mvcontrol-4v-{condition_type} \
             exp_root_dir={exp_root_dir} name={asset_name} tag=gaussian_refine"
             
     if args.load_coarse_gs_only_position:
@@ -99,11 +100,12 @@ if __name__ == "__main__":
     )
     command = f"python launch.py --config custom/threestudio-3dgs/configs/mvcontrol-sugar-vsd.yaml --train --gpu 0 \
         system.stage=sugar \
-        system.geometry.surface_mesh_to_bind_path={sugar_mesh_path} \
         system.hint_image_path={hint_path} \
         system.hint_mask_path={mask_path} \
-        system.prompt_processor.prompt='{prompt}' \
         system.control_condition_type={condition_type} \
+        system.geometry.surface_mesh_to_bind_path={sugar_mesh_path} \
+        system.prompt_processor.prompt='{prompt}' \
+        system.guidance_control.pretrained_controlnet_name_or_path=lzq49/mvcontrol-4v-{condition_type} \
         exp_root_dir={exp_root_dir} \
         name={asset_name} \
         tag=sugar_refine"

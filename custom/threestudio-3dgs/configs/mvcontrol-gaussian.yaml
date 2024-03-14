@@ -1,6 +1,6 @@
-name: "mvcontrol-gaussian-test"
-tag: "${data.height},_}"
-exp_root_dir: "outputs"
+name: "mvcontrol-gaussian"
+tag: "${data.random_camera.height}_${rmspace:${basename:${data.image_path}},_}"
+exp_root_dir: "workspace/mvcontrol_${system.control_condition_type}"
 seed: 0
 
 data_type: "random-camera-datamodule"
@@ -29,7 +29,7 @@ data:
 system_type: "sugar-mvcontrol-system"
 system:
   stage: "gaussian"
-  hint_image_path: "./load/teddy_canny.png"
+  hint_image_path: ""
   control_condition_type: depth
 
   # min_opac_prune: [1000, 0.5, 0.9, 2000]
@@ -95,7 +95,7 @@ system:
 
   prompt_processor_type: "deep-floyd-prompt-processor"
   prompt_processor:
-    pretrained_model_name_or_path: "/home/lzq/workspace/huggingface_models/DeepFloyd--IF-I-XL-v1.0"
+    pretrained_model_name_or_path: "DeepFloyd/IF-I-XL-v1.0"
     prompt: ???
     negative_prompt: "ugly, bad anatomy, blurry, pixelated obscure, unnatural colors, poor lighting, dull, and unclear, cropped, lowres, low quality, artifacts, duplicate, morbid, mutilated, poorly drawn face, deformed, dehydrated, bad proportions"
     front_threshold: 30.0
@@ -104,7 +104,7 @@ system:
 
   guidance_type: "deep-floyd-guidance"
   guidance:
-    pretrained_model_name_or_path: "/home/lzq/workspace/huggingface_models/DeepFloyd--IF-I-XL-v1.0"
+    pretrained_model_name_or_path: "DeepFloyd/IF-I-XL-v1.0"
     guidance_scale: 20
     min_step_percent: [0, 0.5, 0.02, 500]
     max_step_percent: [0, 0.98, 0.5, 500]
@@ -120,8 +120,8 @@ system:
 
   guidance_control_type: "mvcontrol-guidance"
   guidance_control:
-    pretrained_model_name_or_path: "/home/lzq/workspace/huggingface_models/lzq49--mvdream-sd21-diffusers"
-    pretrained_controlnet_name_or_path: "/home/lzq/workspace/huggingface_models/lzq49--mvcontrol-4v-depth"
+    pretrained_model_name_or_path: "lzq49/mvdream-sd21-diffusers"
+    pretrained_controlnet_name_or_path: "lzq49/mvcontrol-4v-${system.control_condition_type}"
     n_view: 4    
     guidance_scale: 50.0
     min_step_percent: [0, 0.50, 0.10, 500]  # (start_iter, start_val, end_val, end_iter)

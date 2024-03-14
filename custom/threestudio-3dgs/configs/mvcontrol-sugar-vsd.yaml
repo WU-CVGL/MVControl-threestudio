@@ -1,6 +1,6 @@
-name: "mvcontrol-sugar-test"
+name: "mvcontrol-sugar"
 tag: "${data.random_camera.height}_${rmspace:${basename:${data.image_path}},_}"
-exp_root_dir: "outputs"
+exp_root_dir: "workspace/mvcontrol_${system.control_condition_type}"
 seed: 0
 
 data_type: "random-camera-sugar-datamodule"
@@ -32,7 +32,7 @@ data:
 system_type: "sugar-mvcontrol-system"
 system:
   stage: "sugar"
-  hint_image_path: "./load/teddy_canny.png"
+  hint_image_path: ""
   control_condition_type: depth
 
   postprocess: false
@@ -97,8 +97,8 @@ system:
 
   guidance_type: "stable-diffusion-vsd-guidance"
   guidance:
-    pretrained_model_name_or_path: "/home/lzq/workspace/huggingface_models/stabilityai--stable-diffusion-2-1-base"
-    pretrained_model_name_or_path_lora: "/home/lzq/workspace/huggingface_models/stabilityai--stable-diffusion-2-1"
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    pretrained_model_name_or_path_lora: "stabilityai/stable-diffusion-2-1"
     guidance_scale: 7.5
     min_step_percent: 0.02
     max_step_percent: [500, 0.98, 0.50, 501]
