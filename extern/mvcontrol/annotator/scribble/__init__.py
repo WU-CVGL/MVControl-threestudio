@@ -11,11 +11,11 @@ from extern.mvcontrol.annotator.util import HWC3, safe_step, annotator_ckpts_pat
 
 class PidiNetDetector:
     def __init__(self):
-        # remote_model_path = "https://huggingface.co/lllyasviel/Annotators/resolve/main/table5_pidinet.pth"
+        remote_model_path = "https://huggingface.co/lllyasviel/Annotators/resolve/main/table5_pidinet.pth"
         modelpath = os.path.join(annotator_ckpts_path, "table5_pidinet.pth")
-        # if not os.path.exists(modelpath):
-        #     from basicsr.utils.download_util import load_file_from_url
-        #     load_file_from_url(remote_model_path, model_dir=annotator_ckpts_path)
+        if not os.path.exists(modelpath):
+            from basicsr.utils.download_util import load_file_from_url
+            load_file_from_url(remote_model_path, model_dir=annotator_ckpts_path)
         self.netNetwork = pidinet()
         self.netNetwork.load_state_dict({k.replace('module.', ''): v for k, v in torch.load(modelpath)['state_dict'].items()})
         self.netNetwork = self.netNetwork.cuda()

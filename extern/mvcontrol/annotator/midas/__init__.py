@@ -7,7 +7,7 @@ from transformers import DPTImageProcessor, DPTForDepthEstimation
 
 
 class MidasDetector:
-    pretrained_model_name_or_path = "/home/lzq/workspace/huggingface_models/intel--dpt-hybrid-midas"
+    pretrained_model_name_or_path = "intel/dpt-hybrid-midas"
     def __init__(self):
         self.image_processor = DPTImageProcessor.from_pretrained(
             self.pretrained_model_name_or_path
