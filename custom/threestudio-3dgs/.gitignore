@@ -188,12 +188,9 @@ outputs-gradio/
 # wandb
 wandb/
 
-# vscode
-.code-workspace
-
-# custom/*
-/custom/*
-!/custom/threestudio-3dgs/
-workspace/*
+custom/*
 
 load/tets/256_tets.npz
+
+diff-gaussian-rasterization/
+simple-knn/
