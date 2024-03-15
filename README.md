@@ -1,6 +1,6 @@
 # MVControl-threestudio
 
-[**Paper**](https://arxiv.org/abs/xxxx.xxxxx) | [**Project Page**](https://lizhiqi49.github.io/MVControl/)
+[**ArXiv**](https://arxiv.org/abs/xxxx.xxxxx) | [**Paper**](./assets/paper.pdf) | [**Project Page**](https://lizhiqi49.github.io/MVControl/)
 
 Official implementation of *Controllable Text-to-3D Generation via Surface-Aligned Gaussian Splatting*
 
