@@ -188,7 +188,7 @@ python run_from_coarse_gs.py -n $asset_name -c $condition_type -p '$prompt' -cp 
 - [x] Release the inference code.
 - [ ] Reorgenize the code.
 - [ ] Improve the quality (texture & surface) of SuGaR refinement stage.
-- [ ] Provide mode examples for test.
+- [ ] Provide more examples for test.
 
 ## Credits
 This project is built upon the awesome project [threestudio](https://github.com/threestudio-project) and thanks to the open-source of these works: [LGM](https://github.com/3DTopia/LGM), [MVDream](https://github.com/bytedance/MVDream), [ControlNet](https://github.com/lllyasviel/ControlNet) and [SuGaR](https://github.com/Anttwo/SuGaR).
