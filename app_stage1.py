@@ -31,8 +31,8 @@ GRADIO_PLY_PATH = 'gradio_output.ply'
 
 opt = tyro.cli(AllConfigs)
 
-pretrained_model_name_or_path = "/home/lzq/workspace/huggingface_models/lzq49--mvdream-sd21-diffusers"
-pretrained_controlnet_name_or_path = f"/home/lzq/workspace/huggingface_models/lzq49--mvcontrol-4v-{opt.condition_type}"
+pretrained_model_name_or_path = "lzq49/mvdream-sd21-diffusers"
+pretrained_controlnet_name_or_path = f"lzq49/mvcontrol-4v-{opt.condition_type}"
 
 # model
 model = LGM(opt)

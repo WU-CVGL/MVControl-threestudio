@@ -23,7 +23,9 @@ Official implementation of *Controllable Text-to-3D Generation via Surface-Align
 
 ### Install threestudio
 
-**This part is the same as original threestudio repository, skip it if you have already installed the environment.**
+～～**This part is the same as original threestudio repository, skip it if you have already installed the environment.**～～
+
+**!!! The `requirement.txt` we use is slightly different from the original threestudio repository (the version of diffusers and gradio). If error occurs with the original threestudio env, please use our configuration file.**
 
 See [installation.md](docs/installation.md) for additional information, including installation via Docker.
 
@@ -42,12 +44,11 @@ python3 -m virtualenv venv
 python3 -m pip install --upgrade pip
 ```
 
-- Install `PyTorch >= 1.12`. We have tested on `torch1.12.1+cu113` and `torch2.0.0+cu118`, but other versions should also work fine.
+- ～～Install `PyTorch >= 1.12`. We have tested on `torch1.12.1+cu113` and `torch2.0.0+cu118`, but other versions should also work fine.～～
+- Install `PyTorch == 2.2.1` since `xformers` requires newest torch version.
 
 ```sh
-# torch1.12.1+cu113
-pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
-# or torch2.0.0+cu118
+# newest torch version under cuda11.8
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 ```
 
@@ -122,7 +123,7 @@ python app_stage1.py big --resume path/to/LGM/model_fp16.safetensors --condition
 ### Taking 'fatcat' as example
 asset_name=fatcat
 exp_root_dir=workspace/mvcontrol_$condition_type/$asset_name
-hint_path=load/conditions/fatcat_depth.png  # path/to/contion.png
+hint_path=load/conditions/fatcat_depth.png  # path/to/condition.png
 mask_path=load/conditions/fatcat_mask.png   # path/to/mask.png
 prompt="A fat cat, standing with hands in ponts pockets"  # prompt
 coarse_gs_path=$exp_root_dir/coarse_gs.ply # path/to/saved/coarse_gs.ply
