@@ -23,7 +23,7 @@ Official implementation of *Controllable Text-to-3D Generation via Surface-Align
 
 ### Install threestudio
 
-～～**This part is the same as original threestudio repository, skip it if you have already installed the environment.**～～
+<del>**This part is the same as original threestudio repository, skip it if you have already installed the environment.**</del>
 
 **!!! The `requirement.txt` we use is slightly different from the original threestudio repository (the version of diffusers and gradio). If error occurs with the original threestudio env, please use our configuration file.**
 
@@ -44,7 +44,7 @@ python3 -m virtualenv venv
 python3 -m pip install --upgrade pip
 ```
 
-- ～～Install `PyTorch >= 1.12`. We have tested on `torch1.12.1+cu113` and `torch2.0.0+cu118`, but other versions should also work fine.～～
+<del>- Install `PyTorch >= 1.12`. We have tested on `torch1.12.1+cu113` and `torch2.0.0+cu118`, but other versions should also work fine.</del>
 - Install `PyTorch == 2.2.1` since `xformers` requires newest torch version.
 
 ```sh

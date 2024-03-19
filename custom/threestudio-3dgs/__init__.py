@@ -27,6 +27,7 @@ from .renderer import (
     diff_gaussian_rasterizer_background,
     diff_gaussian_rasterizer_shading,
     diff_sugar_rasterizer_shading,
+    diff_sugar_rasterizer_normal,
 )
 from .system import (
     gaussian_mvdream, 

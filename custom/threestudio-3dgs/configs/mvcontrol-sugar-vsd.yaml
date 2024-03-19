@@ -51,10 +51,10 @@ system:
 
   geometry_type: "sugar"
   geometry:
-    position_lr: [0, 0.00048, 0.0000016, 3000]
+    position_lr: [0, 0.00016, 0.0000016, 3000]
     scaling_lr: 0.005
-    feature_lr: [0, 0.05, 0.01, 3000]
-    opacity_lr: 0.05
+    feature_lr: [0, 0.01, 0.004, 3000]
+    opacity_lr: 0.04
     rotation_lr: 0.001
 
     spatial_extent: ${system.ref_camera.camera_distance}
@@ -66,18 +66,26 @@ system:
 
     init_gs_opacity: 0.9
 
-  renderer_type: "diff-sugar-rasterizer-shading"
+  # renderer_type: "diff-sugar-rasterizer-shading"
+  # renderer:
+  #   debug: false
+  #   # invert_bg_prob: 1.0
+
+  # material_type: "gaussian-diffuse-with-point-light-material"
+  # material:
+  #   ambient_only_steps: 500
+  #   textureless_prob: 0.0
+  #   ambient_light_color: [1.0, 1.0, 1.0]
+  #   diffuse_light_color: [0.0, 0.0, 0.0]
+  #   soft_shading: true
+
+  renderer_type: "diff-sugar-rasterizer-normal"
   renderer:
     debug: false
-    # invert_bg_prob: 1.0
 
-  material_type: "gaussian-diffuse-with-point-light-material"
+  material_type: "no-material" # unused
   material:
-    ambient_only_steps: 500
-    textureless_prob: 0.0
-    ambient_light_color: [1.0, 1.0, 1.0]
-    diffuse_light_color: [0.0, 0.0, 0.0]
-    soft_shading: true
+    n_output_dims: 0
 
   background_type: "gaussian-mvdream-neural-environment-map-background"
   background:
@@ -151,7 +159,7 @@ system:
       background:
         lr: 0.001
       guidance:
-        lr: 0.001
+        lr: 0.0001
 
 
 trainer:
