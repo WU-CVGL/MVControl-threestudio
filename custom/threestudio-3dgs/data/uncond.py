@@ -62,7 +62,8 @@ class RandomCameraDataModuleConfig:
     predict_azimuth_range: Tuple[float, float] = (-180, 180)
     predict_elevation_range: Tuple[float, float] = (-10, 80)
     predict_camera_distance_range: Tuple[float, float] = (1.5, 2.0)
-    # rays_d_normalize: bool = True
+
+    rays_d_normalize: bool = True
 
 
 class RandomCameraIterableDataset(IterableDataset, Updateable):
@@ -323,7 +324,9 @@ class RandomCameraIterableDataset(IterableDataset, Updateable):
         )
 
         # Importance note: the returned rays_d MUST be normalized!
-        rays_o, rays_d = get_rays(directions, c2w, keepdim=True)
+        rays_o, rays_d = get_rays(
+            directions, c2w, keepdim=True, normalize=self.cfg.rays_d_normalize
+        )
 
         proj_mtx: Float[Tensor, "B 4 4"] = get_projection_matrix(
             fovy, self.width / self.height, 0.1, 1000.0
@@ -427,7 +430,9 @@ class RandomCameraDataset(Dataset):
             directions[:, :, :, :2] / focal_length[:, None, None, None]
         )
 
-        rays_o, rays_d = get_rays(directions, c2w, keepdim=True)
+        rays_o, rays_d = get_rays(
+            directions, c2w, keepdim=True, normalize=self.cfg.rays_d_normalize
+        )
         proj_mtx: Float[Tensor, "B 4 4"] = get_projection_matrix(
             fovy, self.cfg.eval_width / self.cfg.eval_height, 0.1, 1000.0
         )  # FIXME: hard-coded near and far
@@ -596,7 +601,9 @@ class RandomCameraArbiraryDataset(Dataset):
             directions[:, :, :, :2] / focal_length[:, None, None, None]
         )
 
-        rays_o, rays_d = get_rays(directions, c2w, keepdim=True)
+        rays_o, rays_d = get_rays(
+            directions, c2w, keepdim=True, normalize=self.cfg.rays_d_normalize
+        )
         proj_mtx: Float[Tensor, "B 4 4"] = get_projection_matrix(
             fovy, self.cfg.predict_width / self.cfg.predict_height, 0.1, 1000.0
         )  # FIXME: hard-coded near and far

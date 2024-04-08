@@ -28,6 +28,7 @@ data:
   predict_azimuth_range: [-180, 180]
   predict_elevation_range: [-10, 80]
   predict_camera_distance_range: [1.3, 1.5]
+  rays_d_normalize: false
 
 system_type: "sugar-mvcontrol-system"
 system:

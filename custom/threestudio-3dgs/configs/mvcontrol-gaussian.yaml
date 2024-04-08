@@ -21,10 +21,7 @@ data:
   eval_fovy_deg: 49.1
   eval_elevation_deg: 0
   n_val_views: 8
-  # relative_radius: false
-  # n_predict_views: 800
-  # predict_azimuth_range: [-180, 180]
-  # predict_elevation_range: [-10, 80]
+  rays_d_normalize: false
 
 system_type: "sugar-mvcontrol-system"
 system:
