@@ -690,9 +690,9 @@ class SuGaRMVControlSystem(BaseSuGaRSystem):
             )
         
         if self.global_step % self.cfg.freq.render_normal == 0:
-            self._render_type == "normal"
+            self._render_type = "normal"
         else:
-            self._render_type == "rgb"
+            self._render_type = "rgb"
         
         out_2d = self.training_substep(batch, batch_idx, guidance="2d")
         total_loss += out_2d["loss"]
