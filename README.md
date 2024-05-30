@@ -19,6 +19,11 @@ Official implementation of *Controllable Text-to-3D Generation via Surface-Align
 </p>
 
 
+## News
+
+- **[2024-05-30]** We have fixed the previous **noisy color issue** of refined SuGaR and textured mesh by using a smaller learning rate for Gaussians' color, the new demo results have been updated in our [**Project Page**](https://lizhiqi49.github.io/MVControl/)!
+
+
 ## Installation
 
 ### Install threestudio
