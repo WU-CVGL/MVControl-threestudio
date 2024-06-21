@@ -1,4 +1,4 @@
-# MVControl-threestudio
+# MVControl
 
 [**ArXiv**](https://arxiv.org/abs/2403.09981) | [**Paper**](./assets/paper.pdf) | [**Project Page**](https://lizhiqi49.github.io/MVControl/)
 
